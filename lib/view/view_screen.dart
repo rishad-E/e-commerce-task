@@ -29,7 +29,8 @@ class HomeScreen extends StatelessWidget {
         actions: [
           IconButton(
               onPressed: () {
-                Get.to(const CartScreen());
+                // Get.to( CartScreen());
+                Get.to(()=>CartScreen());
               },
               icon: const Icon(Icons.shopping_cart_outlined))
         ],
@@ -127,7 +128,6 @@ class HomeScreen extends StatelessWidget {
           ),
           Expanded(   
             child: GridView.builder(
-            
               itemCount: allitems.length,
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,

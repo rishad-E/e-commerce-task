@@ -1,10 +1,12 @@
 import 'package:ecommerce_task/controller/cart_controllerd.dart';
+import 'package:ecommerce_task/controller/payment_controller.dart';
 import 'package:ecommerce_task/view/view_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 void main(){
   Get.put(CartController());
+  Get.put(PaymentController());
   runApp(const MyApp());
 }
 

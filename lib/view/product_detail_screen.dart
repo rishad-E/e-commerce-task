@@ -1,7 +1,7 @@
-
 import 'dart:developer';
 
 import 'package:ecommerce_task/controller/cart_controllerd.dart';
+import 'package:ecommerce_task/controller/payment_controller.dart';
 import 'package:ecommerce_task/model/item_model.dart';
 import 'package:ecommerce_task/utils/constant/colors.dart';
 import 'package:ecommerce_task/utils/constant/texts.dart';
@@ -9,21 +9,24 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class DetailsScreen extends StatelessWidget {
-  const DetailsScreen(
-      {super.key,
-      required this.productname,
-      required this.image,
-      required this.price});
+  DetailsScreen({
+    super.key,
+    required this.productname,
+    required this.image,
+    required this.price,
+  });
 
   final String productname;
   final String image;
   final int price;
 
+  final PaymentController pcontroller = Get.put(PaymentController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Column( 
+      body: Column(
         children: [
           Container(
             width: double.infinity,
@@ -100,16 +103,15 @@ class DetailsScreen extends StatelessWidget {
                             onPressed: () {
                               final ItemModel model =
                                   ItemModel(productname, image, price);
-                              log(model.name);
+                             
                               controller.addtocart(model);
                               Get.showSnackbar(
                                 const GetSnackBar(
                                   margin: EdgeInsets.all(15),
-                                  snackStyle: SnackStyle.FLOATING , 
+                                  snackStyle: SnackStyle.FLOATING,
                                   message: 'item added to cart',
                                   backgroundColor: Colors.green,
                                   duration: Duration(seconds: 2),
-                                  
                                 ),
                               );
                             },
@@ -129,7 +131,8 @@ class DetailsScreen extends StatelessWidget {
                             height: 50,
                             child: ElevatedButton(
                               onPressed: () {
-                                
+                               
+                                pcontroller.openPayment(price);
                               },
                               style: ElevatedButton.styleFrom(
                                   backgroundColor: buttoncolor),

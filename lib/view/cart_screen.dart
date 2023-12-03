@@ -1,7 +1,7 @@
-
 import 'dart:developer';
 
 import 'package:ecommerce_task/controller/cart_controllerd.dart';
+import 'package:ecommerce_task/controller/payment_controller.dart';
 import 'package:ecommerce_task/utils/constant/colors.dart';
 import 'package:ecommerce_task/utils/constant/texts.dart';
 import 'package:ecommerce_task/utils/widgets/bottom_sheet.dart';
@@ -9,7 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class CartScreen extends StatelessWidget {
-  const CartScreen({super.key});
+   CartScreen({super.key});
+  final PaymentController pcontroller = Get.put(PaymentController());
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +29,7 @@ class CartScreen extends StatelessWidget {
             child: GetBuilder<CartController>(
               init: CartController(),
               builder: (controller) {
-                log(controller.cartitem.toString());
+              
                 if (controller.cartitem.isEmpty) {
                   return Center(
                     child: primarytxt("No items", 14),
@@ -125,7 +126,7 @@ class CartScreen extends StatelessWidget {
                     } else {
                       await controller.calculation();
                       Get.bottomSheet(bottomsheetcontainer(
-                          controller.cartitem.length, controller.total));
+                         item:  controller.cartitem.length,price:  controller.total,pcontroller:  pcontroller));
                     }
                   },
                   style: ElevatedButton.styleFrom(backgroundColor: buttoncolor),

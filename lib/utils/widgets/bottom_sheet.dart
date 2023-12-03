@@ -1,11 +1,16 @@
-
 import 'dart:developer';
 
+import 'package:ecommerce_task/controller/payment_controller.dart';
 import 'package:ecommerce_task/utils/constant/colors.dart';
 import 'package:ecommerce_task/utils/constant/texts.dart';
 import 'package:flutter/material.dart';
 
-Widget bottomsheetcontainer(int item, int price) {
+Widget bottomsheetcontainer({
+  required int item,
+  required int price,
+  required PaymentController pcontroller,
+  String? pName,
+}) {
   return Container(
     height: 170,
     decoration: const BoxDecoration(
@@ -51,7 +56,8 @@ Widget bottomsheetcontainer(int item, int price) {
             width: double.infinity,
             child: ElevatedButton(
               onPressed: () {
-                log("continerjal");
+               
+                pcontroller.openPayment(price);
               },
               style: ElevatedButton.styleFrom(backgroundColor: buttoncolor),
               child: customtext(

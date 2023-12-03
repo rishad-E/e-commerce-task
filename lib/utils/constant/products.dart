@@ -22,6 +22,6 @@ List<ItemModel> allitems = [
   // {'name':'Asian future-01','image':'assets/images/image6.png','price':1899},
   // {'name':'ROGG Scent','image':'assets/images/image7.png','price':419},
   // {'name':'Daniel Klein','image':'assets/images/image8.png','price':2499},
-  // {'name':'Fastrack Analog','image':'assets/images/image9.png','price':1765},
+  // {'name':'Fastrack Ana','image':'assets/images/image9.png','price':1765},
   // {'name':'Crayons','image':'assets/images/image10.png','price':80},
 ];
